@@ -4,3 +4,4 @@ transformers~=4.36.2
 datasets~=2.16.1
 evaluate~=0.4.1
 jiwer~=3.0.3
+streamlit~=1.30.0
