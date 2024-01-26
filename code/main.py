@@ -21,16 +21,16 @@ d_output = distil(example["audio"]["array"])
 correct = example["english_transcription"]
 
 task_evaluator = evaluator("automatic-speech-recognition")
-wer_metric = load("wer")
-
-normalizer = BasicTextNormalizer()
-f_wer = wer_metric.compute(references=[normalizer(correct)], predictions=[normalizer(f_output['text'])])
-w_wer = wer_metric.compute(references=[normalizer(correct)], predictions=[normalizer(w_output['text'])])
-d_wer = wer_metric.compute(references=[normalizer(correct)], predictions=[normalizer(d_output['text'])])
-
-print(f_wer)
-print(w_wer)
-print(d_wer)
+# wer_metric = load("wer")
+#
+# normalizer = BasicTextNormalizer()
+# f_wer = wer_metric.compute(references=[normalizer(correct)], predictions=[normalizer(f_output['text'])])
+# w_wer = wer_metric.compute(references=[normalizer(correct)], predictions=[normalizer(w_output['text'])])
+# d_wer = wer_metric.compute(references=[normalizer(correct)], predictions=[normalizer(d_output['text'])])
+#
+# print(f_wer)
+# print(w_wer)
+# print(d_wer)
 
 task_evaluator.PIPELINE_KWARGS.pop('truncation', None)
 
