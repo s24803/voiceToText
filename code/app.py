@@ -33,7 +33,6 @@ uploaded_file = st.file_uploader("Choose a file", type=['mp4', 'avi', 'mov', 'mk
 result = None
 
 if st.button("Generate text") and uploaded_file is not None:
-    # audio = video_to_audio(uploaded_file)
     audio = video_to_audio(uploaded_file)
     result = convert_voice_to_text(audio)
     st.write(result["text"])
