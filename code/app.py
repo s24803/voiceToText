@@ -1,6 +1,5 @@
 from transformers import pipeline
 import streamlit as st
-import time
 from pydub import AudioSegment
 
 st.set_page_config(
