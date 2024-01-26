@@ -21,11 +21,6 @@ def video_to_audio(file):
     return video.export(format="wav").read()
 
 
-def convert_voice_to_text(file):
-    # return whisper(file.getvalue())
-    return whisper(file)
-
-
 whisper = load_model("openai/whisper-base.en")
 
 uploaded_file = st.file_uploader("Choose a file", type=['mp4', 'avi', 'mov', 'mkv', 'wmv', 'flv', 'webm'])
@@ -34,7 +29,7 @@ result = None
 
 if st.button("Generate text") and uploaded_file is not None:
     audio = video_to_audio(uploaded_file)
-    result = convert_voice_to_text(audio)
+    result = whisper(audio)
     st.write(result["text"])
 
 if result is not None:
