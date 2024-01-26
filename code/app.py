@@ -26,9 +26,13 @@ uploaded_file = st.file_uploader("Choose a file", type=['mp4', 'avi', 'mov', 'mk
 
 result = None
 
+generate_kwargs = {
+    "do_sample": True
+}
+
 if st.button("Generate text") and uploaded_file is not None:
     audio = video_to_audio(uploaded_file)
-    result = whisper(audio)
+    result = whisper(audio, generate_kwargs=generate_kwargs)
     st.write(result["text"])
 
 if result is not None:
