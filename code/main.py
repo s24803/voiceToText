@@ -7,17 +7,9 @@ from evaluate import evaluator
 minds = load_dataset("PolyAI/minds14", name="en-AU", split="train[:40]")
 minds = minds.cast_column("audio", Audio(sampling_rate=16_000))
 
-example = minds[0]
-
 facebook = pipeline("automatic-speech-recognition", model="facebook/wav2vec2-base-960h")
 whisper = pipeline("automatic-speech-recognition", model="openai/whisper-base.en")
 distil = pipeline("automatic-speech-recognition", model="distil-whisper/distil-small.en")
-
-f_output = facebook(example["audio"]["array"])
-w_output = whisper(example["audio"]["array"])
-d_output = distil(example["audio"]["array"])
-
-correct = example["english_transcription"]
 
 task_evaluator = evaluator("automatic-speech-recognition")
 
